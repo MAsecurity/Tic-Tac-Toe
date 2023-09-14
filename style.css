@@ -1,0 +1,37 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background: linear-gradient(to left, #e66465, #9198e5 );
+
+
+}
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gameboard div {
+  height: 150px;
+  width: 150px;
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+}
+
+.gameboard .no-border-right {
+  border-right: none;
+}
+
+.gameboard .no-border-bottom {
+  border-bottom: none;
+}
