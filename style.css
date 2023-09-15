@@ -1,19 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Roboto, "sans-serif";
 }
 
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
   background: linear-gradient(to left, #e66465, #9198e5 );
-
-
+  position: relative;
 }
 
 .gameboard {
@@ -35,3 +33,102 @@
 .gameboard .no-border-bottom {
   border-bottom: none;
 }
+
+.fadeOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fadeIn {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.info {
+  position:absolute;
+  display: flex;
+  gap: 100px;
+  width: 100%;
+  flex-direction: column;
+  font-weight: bold;
+  color: #dadadb;
+  padding: 100px;
+
+
+}
+
+.info .title {
+  display: flex;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.gamePick {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 100px;
+  
+}
+
+.player1 , .player2 {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.player1heading, .player2heading {
+  font-size: 2rem;
+}
+
+.player2 button, .player1 button {
+  width: 150px;
+  height: 50px;
+  border-radius: 3px;
+  color: #dadadb;
+  background-color: black;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.player2 button:hover , .player1 button:hover{
+  opacity: 0.8;
+  background-color: #dadadb;
+  color: black;
+}
+
+.player2 button:active, .player1 button:active {
+  opacity: 0.5;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+
+}
+
+.submit-button button {
+  width: 150px;
+  height: 50px;
+  border-radius: 3px;
+  color: #dadadb;
+  background-color: rgb(3, 119, 9);
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.15s;
+
+}
+
+.submit-button button:hover {
+  opacity: 0.8;
+}
+
+.submit-button button:active {
+  opacity: 0.5;
+}
+
