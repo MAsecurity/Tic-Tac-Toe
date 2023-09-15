@@ -17,6 +17,11 @@
 .gameboard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  transition: opacity 0.15s ease 0.5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .gameboard div {
@@ -53,6 +58,7 @@
   font-weight: bold;
   color: #dadadb;
   padding: 100px;
+  transition: opacity 0.15s ease;
 
 
 }
@@ -92,6 +98,7 @@
   border: none;
   cursor: pointer;
   transition: 0.15s;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.5);
 }
 
 .player2 button:hover , .player1 button:hover{
@@ -107,6 +114,8 @@
 .submit-button {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
 }
 
@@ -132,3 +141,15 @@
   opacity: 0.5;
 }
 
+
+.active {
+  box-shadow: none !important;
+  background-color: rgb(3, 119, 9) !important;
+}
+
+.warning {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+}

@@ -4,16 +4,21 @@
 //playRound, makes this private, which should query all div elements and add event listeners, depending on the active player x or o will be drawn
 
 
-const gameBoard = (player1, player2) => {
+const gameBoardFunc = (player1, player2) => {
   let activePlayer;
   console.log(player1, player2);
 };
 // https://dev.to/nicm42/multiple-buttons-looking-like-theyre-staying-pressed-one-at-a-time-4bbb this shows how to click only one button
 let player1Choice;
 let player2Choice;
+
 const player1Btn = document.querySelectorAll(".player1 button");
 const player2Btn = document.querySelectorAll(".player2 button");
 const submitBtn = document.querySelector(".submit-button");
+const info = document.querySelector(".info");
+const gameBoard = document.querySelector(".gameboard");
+const warningMessage = document.querySelector(".warning");
+
 player1Btn.forEach(currentPlayer1button => {
   currentPlayer1button.addEventListener("click", () => {
     player1Btn.forEach(removeBtnClass => removeBtnClass.classList.remove("active"));
@@ -33,8 +38,14 @@ player2Btn.forEach(currentPlayer2button => {
 });
 
 submitBtn.addEventListener("click", () => {
-  if (player1Choice != '' && player2Choice != '') {
-    gameBoard(player1Choice, player2Choice);
+  if (player1Choice != null && player2Choice != null) {
+    info.classList.add("fadeOut");
+    gameBoard.classList.remove("fadeOut");
+    gameBoard.classList.add("fadeIn");
+
+    gameBoardFunc(player1Choice, player2Choice);
+  }else {
+    warningMessage.textContent = `*Please select a choice for player 1 and player 2...`
   }
 })
 
