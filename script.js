@@ -19,25 +19,23 @@ const gameBoardFunc = (player1, player2) => {
 
   }
   const _render = () => {
-    console.log(allDivs);
     if (getPlayer2 == 'Human') {
       allDivs.forEach(divItem => {
         divItem.addEventListener("click", () => {
           if(divItem.textContent == '') {
             if (_activePlayer === "player1") {
-              playerStatus.textContent = "Player 1 Turn:"
+              playerStatus.textContent = "Player 2 Turn:"
               //Add X
               divItem.textContent = "X";
-              divItem.style.cssText = "font-size: 20px; color: black;";
+              divItem.classList.add("player1-css")
               //Call switchplayer function to change current player
               _switchPlayer()
 
             }else if (_activePlayer === "player2"){
               //Add O
-              playerStatus.textContent = "Player 2 Turn:"
-              //Add X
+              playerStatus.textContent = "Player 1 Turn:";
               divItem.textContent = "O";
-              divItem.style.cssText = "font-size: 20px; color: black;";
+              divItem.classList.add("player2-css");
               //Call switchplayer function to change current player
               _switchPlayer()
 

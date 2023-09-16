@@ -165,3 +165,18 @@
   font-weight: bold;
   margin-bottom: 20px;
 }
+
+.player1-css {
+  color: black;
+  padding: 50px 50px;
+  font-weight: bold;
+  font-size: 50px;
+
+}
+
+.player2-css {
+  color: white;
+  padding: 50px 50px;
+  font-weight: bold;
+  font-size: 50px;
+}
