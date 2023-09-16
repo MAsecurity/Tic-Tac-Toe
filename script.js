@@ -48,6 +48,7 @@ const gameBoardFunc = (player1, player2) => {
         });
       });
     }else if (getPlayer2 == 'AI'){
+      return;
       
     }
 
