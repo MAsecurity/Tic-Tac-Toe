@@ -5,9 +5,13 @@
 
 
 const gameBoardFunc = (player1, player2) => {
+  let getPlayer1 = player1;
+  let getPlayer2 = player2;
   let _activePlayer;
   const processChoices = () => {
-
+    if (getPlayer2 === 'Human') {
+      
+    }
 
   }
   const _switchPlayer = () => {
@@ -28,19 +32,16 @@ const gameBoardFunc = (player1, player2) => {
 const getTheChoices = (() => {
   let player1Choice;
   let player2Choice;
-  const player1Btn = document.querySelectorAll(".player1 button");
+  const player1Btn = document.querySelector(".player1 button");
   const player2Btn = document.querySelectorAll(".player2 button");
   const submitBtn = document.querySelector(".submit-button");
   const info = document.querySelector(".info");
   const gameBoard = document.querySelector(".gameboard");
   const warningMessage = document.querySelector(".warning");
 
-  player1Btn.forEach(currentPlayer1button => {
-    currentPlayer1button.addEventListener("click", () => {
-      player1Btn.forEach(removeBtnClass => removeBtnClass.classList.remove("active"));
-      currentPlayer1button.classList.add("active");
-      player1Choice = currentPlayer1button.textContent;   
-    });
+  player1Btn.addEventListener("click", () => {
+    player1Btn.classList.add("active");
+    player1Choice = player1Btn.textContent;
   });
 
 
@@ -60,7 +61,7 @@ const getTheChoices = (() => {
       gameBoard.classList.add("fadeIn");
       gameBoardFunc(player1Choice, player2Choice);
     }else {
-      warningMessage.textContent = `*Please select a choice for player 1 and player 2...`
+      warningMessage.textContent = `*Please select a choice for Player 1 and Player 2...`
     }
   })
 
