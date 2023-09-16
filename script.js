@@ -1,15 +1,21 @@
-//First process and extract the choice of player 1 and player 2 using click listeners and so on and pass them into the factory function gameBoardFunc
-//Create a global variable inside of gameBoard named activePlayer, this will be used to switch between current player and enemy player
-//Create a Factory function which is  public which processes those values , and then calls the private Factory function playRound
-//playRound, makes this private, which should query all div elements and add event listeners, depending on the active player x or o will be drawn
-
-
+//Query all of the divs, and add event listeners to them
+//Then if its is clicked  change the textContent to either x or o depending on active player, 
+// but before  also check for if the textcontent is equal to empty string or not, and prevent it it isnt
+//To modify the active player, call switch player after each move so in this case player 1 will move first, then call
+//Switch player function to change current active player.
 const gameBoardFunc = (player1, player2) => {
   let getPlayer1 = player1;
   let getPlayer2 = player2;
   let _activePlayer;
   const processChoices = () => {
     if (getPlayer2 === 'Human') {
+      const allDivs = document.querySelectorAll(".gameboard-grid div")
+      allDivs.forEach(divItem, () => {
+        divItem.addEventListener("click", () => {
+
+        });
+      });
+
       
     }
 
