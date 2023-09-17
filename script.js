@@ -159,8 +159,8 @@ const getTheChoices = (() => {
       info.classList.add("fadeOut");
       gameBoard.classList.remove("fadeOut");
       gameBoard.classList.add("fadeIn");
-      let makeAMove = gameBoardFunc(player1Choice, player2Choice);
-      makeAMove.processChoices();
+      let players = gameBoardFunc(player1Choice, player2Choice);
+      players.processChoices();
     }else {
       warningMessage.textContent = `*Please select a choice for Player 1 and Player 2...`
     }
