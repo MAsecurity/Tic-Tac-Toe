@@ -80,37 +80,37 @@ const gameBoardFunc = (player1, player2) => {
     //                  6,7,8]
 
     //Check for Horizontal wins and its not equal to empty ''
-    if (allDivs[0].textContent == allDivs[1].textContent == allDivs[2].textContent && allDivs[0].textContent != ''){
+    if (allDivs[0].textContent == allDivs[1].textContent && allDivs[0].textContent == allDivs[2].textContent && allDivs[0].textContent != ''){
       return (allDivs[0].textContent == "X") ? "X" : "O";
-      
-    }else if(allDivs[3].textContent == allDivs[4].textContent == allDivs[5].textContent && allDivs[3].textContent != '') {
+
+    }else if(allDivs[3].textContent == allDivs[4].textContent &&  allDivs[3].textContent == allDivs[5].textContent && allDivs[3].textContent != '') {
         return (allDivs[3].textContent == "X") ? "X" : "O";
 
 
-    }else if (allDivs[6].textContent == allDivs[7].textContent == allDivs[8].textContent && allDivs[6].textContent != ''){
+    }else if (allDivs[6].textContent == allDivs[7].textContent && allDivs[6].textContent == allDivs[8].textContent && allDivs[6].textContent != ''){
         return (allDivs[6].textContent == "X") ? "X" : "O";
  
 
     }
     //Check for vertical wins
-    if (allDivs[0].textContent == allDivs[3].textContent == allDivs[6].textContent && allDivs[0].textContent != '') {
+    if (allDivs[0].textContent == allDivs[3].textContent && allDivs[0].textContent == allDivs[6].textContent && allDivs[0].textContent != '') {
       return (allDivs[0].textContent == "X") ? "X" : "O";
 
       
-    }else if(allDivs[1].textContent == allDivs[4].textContent == allDivs[7].textContent && allDivs[1].textContent != '') {
+    }else if(allDivs[1].textContent == allDivs[4].textContent && allDivs[1].textContent == allDivs[7].textContent && allDivs[1].textContent != '') {
       return (allDivs[1].textContent == "X") ? "X" : "O";
    
 
-    }else if (allDivs[2].textContent == allDivs[5].textContent == allDivs[8].textContent && allDivs[2].textContent != '') {
+    }else if (allDivs[2].textContent == allDivs[5].textContent && allDivs[2].textContent == allDivs[8].textContent && allDivs[2].textContent != '') {
       return (allDivs[2].textContent == "X") ? "X" : "O";
 
     }
     
     //Check for Diagonal wins 
-    if (allDivs[0].textContent == allDivs[4].textContent == allDivs[8].textContent && allDivs[0].textContent != ''){
+    if (allDivs[0].textContent == allDivs[4].textContent && allDivs[0].textContent == allDivs[8].textContent && allDivs[0].textContent != ''){
       return (allDivs[0].textContent == "X") ? "X" : "O";
 
-    }else if(allDivs[2].textContent == allDivs[4].textContent == allDivs[6].textContent && allDivs[2].textContent != '') {
+    }else if(allDivs[2].textContent == allDivs[4].textContent && allDivs[2].textContent == allDivs[6].textContent && allDivs[2].textContent != '') {
       return (allDivs[2].textContent == "X") ? "X" : "O";
 
     }
