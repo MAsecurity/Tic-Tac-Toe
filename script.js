@@ -33,6 +33,14 @@ const gameBoardFunc = (player1, player2) => {
               _switchPlayer()
               //Call CheckWinner function
               _checkWinner();
+              let result = _checkWinner();
+              if (result == "Draw"){
+                console.log("Draw");
+              }else if (result == "X"){
+                console.log("Player 1 (X) won");
+              }else if (result == "O"){
+                console.log("Player 2 (O) won");
+              }
 
             }else if (_activePlayer === "player2"){
               //Add O
@@ -42,7 +50,14 @@ const gameBoardFunc = (player1, player2) => {
               //Call switchplayer function to change current player
               _switchPlayer();
               //Call checkWinner function
-              _checkWinner();
+              let result = _checkWinner();
+              if (result == "Draw"){
+                console.log("Draw");
+              }else if (result == "X"){
+                console.log("Player 1 (X) won");
+              }else if (result == "O"){
+                console.log("Player 2 (O) won");
+              }
 
             }
 
@@ -60,8 +75,51 @@ const gameBoardFunc = (player1, player2) => {
   }
 
   const _checkWinner = () => {
-    for(let i=0; i<allDivs.length; i++){
-      console.log(allDivs[i].textContent);
+    // let cardBoard = [0,1,2,
+    //                  3,4,5,
+    //                  6,7,8]
+
+    //Check for Horizontal wins and its not equal to empty ''
+    if (allDivs[0].textContent == allDivs[1].textContent == allDivs[2].textContent && allDivs[0].textContent != ''){
+      return (allDivs[0].textContent == "X") ? "X" : "O";
+      
+    }else if(allDivs[3].textContent == allDivs[4].textContent == allDivs[5].textContent && allDivs[3].textContent != '') {
+        return (allDivs[3].textContent == "X") ? "X" : "O";
+
+
+    }else if (allDivs[6].textContent == allDivs[7].textContent == allDivs[8].textContent && allDivs[6].textContent != ''){
+        return (allDivs[6].textContent == "X") ? "X" : "O";
+ 
+
+    }
+    //Check for vertical wins
+    if (allDivs[0].textContent == allDivs[3].textContent == allDivs[6].textContent && allDivs[0].textContent != '') {
+      return (allDivs[0].textContent == "X") ? "X" : "O";
+
+      
+    }else if(allDivs[1].textContent == allDivs[4].textContent == allDivs[7].textContent && allDivs[1].textContent != '') {
+      return (allDivs[1].textContent == "X") ? "X" : "O";
+   
+
+    }else if (allDivs[2].textContent == allDivs[5].textContent == allDivs[8].textContent && allDivs[2].textContent != '') {
+      return (allDivs[2].textContent == "X") ? "X" : "O";
+
+    }
+    
+    //Check for Diagonal wins 
+    if (allDivs[0].textContent == allDivs[4].textContent == allDivs[8].textContent && allDivs[0].textContent != ''){
+      return (allDivs[0].textContent == "X") ? "X" : "O";
+
+    }else if(allDivs[2].textContent == allDivs[4].textContent == allDivs[6].textContent && allDivs[2].textContent != '') {
+      return (allDivs[2].textContent == "X") ? "X" : "O";
+
+    }
+    
+    if (allDivs[0].textContent != '' && allDivs[1].textContent != '' && allDivs[2].textContent != '' && allDivs[3].textContent != '' && allDivs[4].textContent != '' && allDivs[5].textContent != '' && allDivs[6].textContent != '' && allDivs[7].textContent != '' && allDivs[8].textContent != '') {
+      //Game is a draw and no empty divs left
+      return "Draw";
+
+
     }
   
 
