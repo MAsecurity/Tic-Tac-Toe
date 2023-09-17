@@ -3,6 +3,7 @@
 // but before  also check for if the textcontent is equal to empty string or not, and prevent it it isnt
 //To modify the active player, call switch player after each move so in this case player 1 will move first, then call
 //Switch player function to change current active player.
+//Now you must check for wins constantly by calling the checkWinner funciton after each move
 const gameBoardFunc = (player1, player2) => {
   const allDivs = document.querySelectorAll(".gameboard-grid div");
   const playerStatus = document.querySelector(".playerstatus");
@@ -19,7 +20,7 @@ const gameBoardFunc = (player1, player2) => {
 
   }
   const _render = () => {
-    if (getPlayer2 == 'Human') {
+    if (getPlayer2 == 'Human' && getPlayer1 == 'Human') {
       allDivs.forEach(divItem => {
         divItem.addEventListener("click", () => {
           if(divItem.textContent == '') {
@@ -30,6 +31,8 @@ const gameBoardFunc = (player1, player2) => {
               divItem.classList.add("player1-css")
               //Call switchplayer function to change current player
               _switchPlayer()
+              //Call CheckWinner function
+              _checkWinner();
 
             }else if (_activePlayer === "player2"){
               //Add O
@@ -37,7 +40,9 @@ const gameBoardFunc = (player1, player2) => {
               divItem.textContent = "O";
               divItem.classList.add("player2-css");
               //Call switchplayer function to change current player
-              _switchPlayer()
+              _switchPlayer();
+              //Call checkWinner function
+              _checkWinner();
 
             }
 
@@ -55,6 +60,10 @@ const gameBoardFunc = (player1, player2) => {
   }
 
   const _checkWinner = () => {
+    for(let i=0; i<allDivs.length; i++){
+      console.log(allDivs[i].textContent);
+    }
+  
 
   }
 
