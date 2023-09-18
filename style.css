@@ -90,7 +90,7 @@
   font-size: 2rem;
 }
 
-.player2 button, .player1 button {
+.player2 button, .player1 button , .gameboard .reset {
   width: 150px;
   height: 50px;
   border-radius: 3px;
@@ -104,13 +104,13 @@
   box-shadow: 0px 2px 3px rgba(0,0,0,0.5);
 }
 
-.player2 button:hover , .player1 button:hover{
+.player2 button:hover , .player1 button:hover, .gameboard .reset:hover{
   opacity: 0.8;
   background-color: #dadadb;
   color: black;
 }
 
-.player2 button:active, .player1 button:active {
+.player2 button:active, .player1 button:active, .gameboard .reset:active {
   opacity: 0.5;
 }
 
@@ -157,12 +157,18 @@
   margin-top: 5px;
 }
 
+
+.gameboard .update{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  flex-direction: column;
+}
+
 .playerstatus {
   color: #dadadb;
   font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
   margin-bottom: 20px;
 }
 
@@ -180,3 +186,10 @@
   font-weight: bold;
   font-size: 50px;
 }
+
+
+.gameboard .reset {
+  margin-bottom: 20px;
+}
+
+
