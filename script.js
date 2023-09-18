@@ -23,7 +23,7 @@ const gameBoardFunc = (player1, player2) => {
                 //Add X
                 divItem.textContent = "X";
                 divItem.classList.add("player1-css");
-                playerStatus.textContent = "Player 2 Turn:";
+                playerStatus.textContent = "Player 2 Turn (O):";
                 //Call switchplayer function to change current player
                 _switchPlayer()
                 //Call CheckWinner function
@@ -36,7 +36,7 @@ const gameBoardFunc = (player1, player2) => {
                 //Add O
                 divItem.textContent = "O";
                 divItem.classList.add("player2-css");
-                playerStatus.textContent = "Player 1 Turn:"
+                playerStatus.textContent = "Player 1 Turn (X):"
                 //Call switchplayer function to change current player
                 _switchPlayer();
                 //Call checkWinner function
@@ -112,8 +112,19 @@ const gameBoardFunc = (player1, player2) => {
 
   const _clear = () => {
     //Should reset all values when the reset button is clicked
-
-
+    playAgain.addEventListener("click", () => {
+      _enableGrid();
+      for (let i=0; i<allDivs.length; i++){
+        allDivs[i].textContent = '';
+        allDivs[i].classList.remove("player1-css");
+        allDivs[i].classList.remove("player2-css");
+      }
+      playAgain.classList.remove("fadeIn");
+      playAgain.classList.add("fadeOut");
+      playerStatus.textContent = '';
+      _activePlayer = "player1";
+      
+    });
   }
 
   const _declareWinner = (result) => {
@@ -148,7 +159,7 @@ const gameBoardFunc = (player1, player2) => {
 
   }
 
-  const _enabledGrid = () => {
+  const _enableGrid = () => {
     for (let i=0; i < allDivs.length; i++){
       allDivs[i].classList.remove("disable");
     }
