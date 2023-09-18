@@ -1,12 +1,7 @@
-//Query all of the divs, and add event listeners to them
-//Then if its is clicked  change the textContent to either x or o depending on active player, 
-// but before  also check for if the textcontent is equal to empty string or not, and prevent it it isnt
-//To modify the active player, call switch player after each move so in this case player 1 will move first, then call
-//Switch player function to change current active player.
-//Now you must check for wins constantly by calling the checkWinner funciton after each move
 const gameBoardFunc = (player1, player2) => {
   const allDivs = document.querySelectorAll(".gameboard-grid div");
   const playerStatus = document.querySelector(".playerstatus");
+  const playAgain = document.querySelector(".reset");
   let getPlayer1 = player1;
   let getPlayer2 = player2;
   let _activePlayer = "player1";
@@ -20,46 +15,41 @@ const gameBoardFunc = (player1, player2) => {
 
   }
   const _render = () => {
-    if (getPlayer2 == 'Human' && getPlayer1 == 'Human') {
       allDivs.forEach(divItem => {
         divItem.addEventListener("click", () => {
           if(divItem.textContent == '') {
-            if (_activePlayer === "player1") {
-              playerStatus.textContent = "Player 2 Turn:"
-              //Add X
-              divItem.textContent = "X";
-              divItem.classList.add("player1-css")
-              //Call switchplayer function to change current player
-              _switchPlayer()
-              //Call CheckWinner function
-              _checkWinner();
-              let result = _checkWinner();
-              if (result == "Draw"){
-                console.log("Draw");
-              }else if (result == "X"){
-                console.log("Player 1 (X) won");
-              }else if (result == "O"){
-                console.log("Player 2 (O) won");
-              }
+            if (getPlayer2 == 'Human' && getPlayer1 == 'Human') {
+              if (_activePlayer === "player1") {
+                //Add X
+                divItem.textContent = "X";
+                divItem.classList.add("player1-css");
+                playerStatus.textContent = "Player 2 Turn:";
+                //Call switchplayer function to change current player
+                _switchPlayer()
+                //Call CheckWinner function
+                _checkWinner();
+                let result = _checkWinner();
+                //Declare winner
+                _declareWinner(result);
 
-            }else if (_activePlayer === "player2"){
-              //Add O
-              playerStatus.textContent = "Player 1 Turn:";
-              divItem.textContent = "O";
-              divItem.classList.add("player2-css");
-              //Call switchplayer function to change current player
-              _switchPlayer();
-              //Call checkWinner function
-              let result = _checkWinner();
-              if (result == "Draw"){
-                console.log("Draw");
-              }else if (result == "X"){
-                console.log("Player 1 (X) won");
-              }else if (result == "O"){
-                console.log("Player 2 (O) won");
-              }
+              }else if (_activePlayer === "player2"){
+                //Add O
+                divItem.textContent = "O";
+                divItem.classList.add("player2-css");
+                playerStatus.textContent = "Player 1 Turn:"
+                //Call switchplayer function to change current player
+                _switchPlayer();
+                //Call checkWinner function
+                let result = _checkWinner();
+                //Declare winner
+                _declareWinner(result)
 
-            }
+              }
+              
+
+              }else if (getPlayer2 == 'AI' && getPlayer1 == 'Human'){
+                return;
+              }
 
           }else{
             return;
@@ -67,12 +57,7 @@ const gameBoardFunc = (player1, player2) => {
 
         });
       });
-    }else if (getPlayer2 == 'AI'){
-      return;
-      
     }
-
-  }
 
   const _checkWinner = () => {
     // let cardBoard = [0,1,2,
@@ -122,6 +107,51 @@ const gameBoardFunc = (player1, player2) => {
 
     }
   
+
+  }
+
+  const _clear = () => {
+    //Should reset all values when the reset button is clicked
+
+
+  }
+
+  const _declareWinner = (result) => {
+    if (result == "Draw"){
+      playerStatus.textContent = "Draw";
+      playAgain.classList.remove("fadeOut");
+      playAgain.classList.add("fadeIn");
+      _disableGrid();
+      _clear();
+    }else if (result == "X"){
+      playerStatus.textContent = `Player 1 has won (${result})`;
+      playAgain.classList.remove("fadeOut");
+      playAgain.classList.add("fadeIn");
+      allDivs.disabled = "true";
+      _disableGrid();
+      _clear();
+    }else if (result == "O"){
+      playerStatus.textContent = `Player 2 has won (${result})`;
+      playAgain.classList.remove("fadeOut");
+      playAgain.classList.add("fadeIn");
+      allDivs.disabled = "true";
+      _disableGrid();
+      _clear();
+    }
+
+  }
+
+  const _disableGrid = () => {
+    for (let i=0; i < allDivs.length; i++){
+      allDivs[i].classList.add("disable");
+    }
+
+  }
+
+  const _enabledGrid = () => {
+    for (let i=0; i < allDivs.length; i++){
+      allDivs[i].classList.remove("disable");
+    }
 
   }
 
