@@ -192,4 +192,8 @@
   margin-bottom: 20px;
 }
 
+.disable {
+  pointer-events: none;
+}
+
 
