@@ -121,7 +121,7 @@ const gameBoardFunc = (player1, player2) => {
       }
       playAgain.classList.remove("fadeIn");
       playAgain.classList.add("fadeOut");
-      playerStatus.textContent = '';
+      playerStatus.textContent = 'Player 1 Turn (X):';
       _activePlayer = "player1";
       
     });
