@@ -15,10 +15,10 @@ const gameBoardFunc = (player1, player2) => {
 
   }
   const _render = () => {
+    if (getPlayer2 == 'Human' && getPlayer1 == 'Human') {
       allDivs.forEach(divItem => {
         divItem.addEventListener("click", () => {
           if(divItem.textContent == '') {
-            if (getPlayer2 == 'Human' && getPlayer1 == 'Human') {
               if (_activePlayer === "player1") {
                 //Add X
                 divItem.textContent = "X";
@@ -47,17 +47,38 @@ const gameBoardFunc = (player1, player2) => {
               }
               
 
-              }else if (getPlayer2 == 'AI' && getPlayer1 == 'Human'){
-                return;
               }
 
-          }else{
-            return;
-          }
+          });
 
         });
-      });
-    }
+      }else if (getPlayer2 == "AI" && getPlayer1 == "Human"){
+        allDivs.forEach(divItem => {
+          divItem.addEventListener("click", () => {
+            if(divItem.textContent == '') {
+              if (_activePlayer === "player1"){
+                //Add X
+                divItem.textContent = "X";
+                divItem.classList.add("player1-css");
+                playerStatus.textContent = "Player 2 Turn (O):";
+                //Call switchplayer function to change current player
+                _switchPlayer();
+                //Call CheckWinner function
+                _checkWinner();
+                let result = _checkWinner();
+                //Declare winner
+                _declareWinner(result);
+                //Call _makeAIMoves function to make an AI move if result is neither X or O
+                if(result != "X" && result != "O"){
+                  _makeAiMoves()
+                }
+                
+              }
+            }
+          });
+        })
+      }
+  }
 
   const _checkWinner = () => {
     // let cardBoard = [0,1,2,
@@ -138,14 +159,12 @@ const gameBoardFunc = (player1, player2) => {
       playerStatus.textContent = `Player 1 has won (${result})`;
       playAgain.classList.remove("fadeOut");
       playAgain.classList.add("fadeIn");
-      allDivs.disabled = "true";
       _disableGrid();
       _clear();
     }else if (result == "O"){
       playerStatus.textContent = `Player 2 has won (${result})`;
       playAgain.classList.remove("fadeOut");
       playAgain.classList.add("fadeIn");
-      allDivs.disabled = "true";
       _disableGrid();
       _clear();
     }
@@ -166,9 +185,43 @@ const gameBoardFunc = (player1, player2) => {
 
   }
 
-  return {processChoices};
+  const _makeAiMoves = (value) => {
+    let randomValue;
+    let validatedNumber = false;
+    console.log(value);
+    while(validatedNumber == false){
+      //Generate random values ranging from 0-8
+      randomNumber = Math.floor(Math.random()*9);
+      if(allDivs[randomNumber].textContent != ''){
+        continue
+      }else{
+        randomValue = randomNumber;
+        validatedNumber = true;
+
+      }
+    }  
+    if(allDivs[randomValue].textContent == ''){
+      //Add O
+      allDivs[randomValue].textContent = "O";
+      allDivs[randomValue].classList.add("player2-css");
+      playerStatus.textContent = "Player 1 Turn (X):"
+      //Call switchplayer function to change current player
+      _switchPlayer();
+      //Call checkWinner function
+      let result = _checkWinner();
+      //Declare winner
+      _declareWinner(result)
+
+      }
+    } 
+    
+    return {processChoices};
+
+  };
+
   
-};
+  
+ 
 const getTheChoices = (() => {
   let player1Choice;
   let player2Choice;
