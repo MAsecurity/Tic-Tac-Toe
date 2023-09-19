@@ -69,7 +69,7 @@ const gameBoardFunc = (player1, player2) => {
                 //Declare winner
                 _declareWinner(result);
                 //Call _makeAIMoves function to make an AI move if result is neither X or O
-                if(result != "X" && result != "O"){
+                if(result != "X" && result != "O" && result != "Draw"){
                   _makeAiMoves()
                 }
                 
