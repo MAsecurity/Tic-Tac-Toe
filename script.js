@@ -185,10 +185,9 @@ const gameBoardFunc = (player1, player2) => {
 
   }
 
-  const _makeAiMoves = (value) => {
+  const _makeAiMoves = () => {
     let randomValue;
     let validatedNumber = false;
-    console.log(value);
     while(validatedNumber == false){
       //Generate random values ranging from 0-8
       randomNumber = Math.floor(Math.random()*9);
