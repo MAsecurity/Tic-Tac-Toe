@@ -2,10 +2,26 @@ const gameBoardFunc = (player1, player2) => {
   const allDivs = document.querySelectorAll(".gameboard-grid div");
   const playerStatus = document.querySelector(".playerstatus");
   const playAgain = document.querySelector(".reset");
+  // const player1Btn = document.querySelector(".player1 button");
+  // const player2Btn = document.querySelectorAll(".player2 button");
+  // const info = document.querySelector(".info");
+  // const restartButton = document.querySelector(".restart");
   let getPlayer1 = player1;
   let getPlayer2 = player2;
   let _activePlayer = "player1";
-  const processChoices = (player1,player2) => {
+  // restartButton.addEventListener("click",()=>{
+  //   // info.classList.remove("fadeOut");
+  //   // gameBoard.classList.add("fadeOut");
+  //   // player1Btn.classList.remove("active");
+  //   // player2Btn.forEach(currentButton =>{
+  //   //   currentButton.classList.remove("active");
+  //   // })
+  //   getPlayer1 = "Human";
+  //   getPlayer2 = "AI";
+  //   _restart()
+  //   _render()
+  // })
+  const processChoices = () => {
     _render();
   }
   const _switchPlayer = () => {
@@ -17,7 +33,7 @@ const gameBoardFunc = (player1, player2) => {
   const _render = () => {
     if (getPlayer2 == 'Human' && getPlayer1 == 'Human') {
       allDivs.forEach(divItem => {
-        divItem.addEventListener("click", () => {
+        divItem.onclick= () => {
           if(divItem.textContent == '') {
               if (_activePlayer === "player1") {
                 //Add X
@@ -43,18 +59,13 @@ const gameBoardFunc = (player1, player2) => {
                 let result = _checkWinner();
                 //Declare winner
                 _declareWinner(result)
-
               }
-              
-
               }
-
-          });
-
+          }
         });
       }else if (getPlayer2 == "AI" && getPlayer1 == "Human"){
         allDivs.forEach(divItem => {
-          divItem.addEventListener("click", () => {
+          divItem.onclick = () => {
             if(divItem.textContent == '') {
               if (_activePlayer === "player1"){
                 //Add X
@@ -75,7 +86,7 @@ const gameBoardFunc = (player1, player2) => {
                 
               }
             }
-          });
+          }
         })
       }
   }
@@ -126,6 +137,19 @@ const gameBoardFunc = (player1, player2) => {
       _activePlayer = "player1";
       
     });
+  }
+  function restart(){
+    _enableGrid();
+    for (let i=0; i<allDivs.length; i++){
+      allDivs[i].textContent = '';
+      allDivs[i].classList.remove("player1-css");
+      allDivs[i].classList.remove("player2-css");
+    }
+    playAgain.classList.remove("fadeIn");
+    playAgain.classList.add("fadeOut");
+    playerStatus.textContent = 'Player 1 Turn (X):';
+    _activePlayer = "player1";
+    _render()
   }
 
   const _declareWinner = (result) => {
@@ -207,7 +231,6 @@ const gameBoardFunc = (player1, player2) => {
     }
 
   }
-  
     
   const _findBestAiMove = () => {
     let currentState = [];
@@ -269,13 +292,9 @@ const gameBoardFunc = (player1, player2) => {
 
     }
     
-    return {processChoices};
+    return {processChoices,restart};
 
   };
-
-  
-  
- 
 const getTheChoices = (() => {
   let player1Choice;
   let player2Choice;
@@ -285,8 +304,7 @@ const getTheChoices = (() => {
   const info = document.querySelector(".info");
   const gameBoard = document.querySelector(".gameboard");
   const warningMessage = document.querySelector(".warning");
-
-
+  const restartButton = document.querySelector(".restart");
   player1Btn.addEventListener("click", () => {
     player1Btn.classList.add("active");
     player1Choice = player1Btn.textContent;
@@ -306,12 +324,22 @@ const getTheChoices = (() => {
     if (player1Choice != null && player2Choice != null) {
       info.classList.add("fadeOut");
       gameBoard.classList.remove("fadeOut");
-      gameBoard.classList.add("fadeIn");
+      // gameBoard.classList.add("fadeIn");
       let players = gameBoardFunc(player1Choice, player2Choice);
+      players.restart()
       players.processChoices();
     }else {
       warningMessage.textContent = `*Please select a choice for Player 1 and Player 2...`
     }
+  })
+  restartButton.addEventListener("click",()=>{
+    info.classList.remove("fadeOut");
+    gameBoard.classList.add("fadeOut");
+    player1Btn.classList.remove("active");
+    player2Btn.forEach(currentButton =>{
+      currentButton.classList.remove("active");
+    })
+
   })
 
 })();

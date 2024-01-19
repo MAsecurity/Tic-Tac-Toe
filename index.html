@@ -25,14 +25,17 @@
       <div class="no-border-bottom"></div>
       <div class="no-border-right no-border-bottom"></div>
     </div>
+    <div class="restart-container">
+      <button class="restart">Restart</button>
     </div>
+    </div>
+    <!-- info -->
     <div class="info">
       <div class="title">Tic Tac Toe</div>
       <div class="gamePick">
         <div class="player1">
           <div class="player1heading">Player 1 (X)</div>
           <button>Human</button>
-
         </div>
         <div class="player2">
           <div class="player2heading">Player 2 (O)</div>
@@ -41,6 +44,25 @@
         </div>  
       </div>
       <div class="submit-button">
+        <button>Submit</button>
+        <div class="warning"></div>
+      </div>
+    </div>
+    <!-- restart -->
+    <div id="info-restart" class="info-restart fadeOut">
+      <div class="title">Tic Tac Toe</div>
+      <div class="gamePick">
+        <div id="player1-restart" class="player1">
+          <div class="player1heading">Player 1 (X)</div>
+          <button>Human</button>
+        </div>
+        <div id="player2-restart" class="player2">
+          <div class="player2heading">Player 2 (O)</div>
+          <button>Human</button>
+          <button>AI</button>
+        </div>  
+      </div>
+      <div id="submit-restart" class="submit-button">
         <button>Submit</button>
         <div class="warning"></div>
       </div>
